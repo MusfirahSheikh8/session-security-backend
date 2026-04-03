@@ -121,16 +121,21 @@ Body:
   "password": "123456"
 }
 🔐 Login
+
 POST /login
+
 Creates new session
+
 Revokes all previous sessions
 
 🔐 Protected Route
+
 GET /protected
 
 Requires valid session cookie.
 
 🔐 Logout Other Sessions
+
 POST /logout-others
 
 Revokes all sessions except current one.
@@ -140,48 +145,67 @@ Revokes all sessions except current one.
 On every login:
 
 All previous sessions are revoked:
+
 UPDATE sessions SET revoked_at = NOW()
+
 WHERE user_id = $1 AND revoked_at IS NULL;
+
 New session is created
 
 👉 Ensures:
 
 Only ONE active session per user
+
 Prevents session hijacking
 
 
 🔒 Security Features
 
 Password hashing using bcrypt
+
 HTTP-only cookies (prevents XSS access)
+
 Secure cookies in production
+
 Session revocation system
+
 Transaction-safe session rotation
+
 Device tracking (deviceId + user-agent)
 
 
 🧪 Testing Flow
 Register user
+
 Login (device-1)
+
 Login again (device-2)
+
 
 Expected:
 
 device-1 → revoked
+
 device-2 → active
 
 
 🚀 Future Improvements
 
 JWT + Refresh Token system
+
 Session dashboard (view active devices)
+
 IP address tracking
+
 Session expiration
+
 Rate limiting
+
 Email verification
 
 
 📌 Author
 
 Musfirah Sheikh
+
 Full Stack Developer
