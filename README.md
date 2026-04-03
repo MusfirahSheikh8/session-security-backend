@@ -71,6 +71,7 @@ npm install
 Create database:
 
 CREATE DATABASE session_security;
+
 4. Create Tables
 ```
 CREATE TABLE users (
@@ -92,16 +93,20 @@ CREATE TABLE sessions (
 5. Configure Environment Variables
 
 Create .env file:
-
+```
 DATABASE_URL=postgresql://postgres:password@localhost:5432/session_security
 NODE_ENV=development
+```
+
 6. Run the server
+```
 node server.js
+```
 
 Server runs on:
-
+```
 http://localhost:3000
-
+```
 
 🔑 API Endpoints
 
@@ -119,6 +124,7 @@ Body:
 POST /login
 Creates new session
 Revokes all previous sessions
+
 🔐 Protected Route
 GET /protected
 
